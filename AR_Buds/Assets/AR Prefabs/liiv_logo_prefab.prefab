@@ -21,9 +21,10 @@ GameObject:
   - component: {fileID: 4360500750616554}
   - component: {fileID: 95126419200147828}
   - component: {fileID: 114995208274698940}
+  - component: {fileID: 65664880286116196}
   m_Layer: 0
   m_Name: liiv_logo_prefab
-  m_TagString: Untagged
+  m_TagString: ARControl_Logo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4073,6 +4074,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1269815049682424}
   m_Mesh: {fileID: 4300088, guid: f77247c63f6fbff4abbfcecf9b7931f1, type: 3}
+--- !u!65 &65664880286116196
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1020002053598946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.620249, y: 1.578748, z: 0.4602744}
+  m_Center: {x: -0.05835876, y: 0.7893742, z: 0.1956051}
 --- !u!95 &95126419200147828
 Animator:
   serializedVersion: 3

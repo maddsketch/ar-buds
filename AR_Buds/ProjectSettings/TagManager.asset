@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - ARControl
+  - ARControl_Menu_Category
+  - ARControl_Logo
   layers:
   - Default
   - TransparentFX
