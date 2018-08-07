@@ -16,6 +16,13 @@ public class ARCategoryControl : MonoBehaviour
     private const float k_movementSpeed = 50.0f;
     private float m_targetScale; // gets applied to all axese
 
+    private bool m_canTap = true;
+    public bool CanTap
+    {
+        set { m_canTap = value; }
+        get { return m_canTap; }
+    }
+
 	void Start ()
     {
         m_targetYPos = transform.position.y;

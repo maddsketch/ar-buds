@@ -7,6 +7,8 @@ TagManager:
   - ARControl
   - ARControl_Menu_Category
   - ARControl_Logo
+  - ARControl_LearnMore
+  - ARSlideshow_Container
   layers:
   - Default
   - TransparentFX
