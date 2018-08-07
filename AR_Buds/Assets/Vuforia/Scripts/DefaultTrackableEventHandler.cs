@@ -14,6 +14,8 @@ using Vuforia;
 /// </summary>
 public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandler
 {
+    public ARContainerManager containerManager;
+
     #region PROTECTED_MEMBER_VARIABLES
 
     protected TrackableBehaviour mTrackableBehaviour;
@@ -74,7 +76,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
     #region PROTECTED_METHODS
 
     protected virtual void OnTrackingFound()
-    {
+    {       
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
@@ -89,7 +91,7 @@ public class DefaultTrackableEventHandler : MonoBehaviour, ITrackableEventHandle
 
         // Enable canvas':
         foreach (var component in canvasComponents)
-            component.enabled = true;
+            component.enabled = true;        
     }
 
 

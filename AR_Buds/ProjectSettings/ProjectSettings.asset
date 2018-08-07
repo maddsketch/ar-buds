@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: 00000000000000000000000000000000
+  productGUID: 0db8e75bc9ec1a446a8fe31686ee6671
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 0
@@ -648,7 +648,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: a15efe1f-8d67-47c6-b724-6b19ea9d7ad4
-  projectName: 
+  projectName: AR_Buds (1)
   organizationId: james-essex
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

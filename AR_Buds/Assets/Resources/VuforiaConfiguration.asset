@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Name: VuforiaConfiguration
   m_EditorClassIdentifier: 
   vuforia:
-    vuforiaLicenseKey: 
+    vuforiaLicenseKey: ARDHNyP/////AAAACGFywiynPkJdolD9MDnmr34XW2iBc21Jl7RLmY5fP2BuGBP8qQ9x+rUVmfO9Lv6zkLp1Jf+BlDynmcWvHNJlFy8F3G7THZZV5lSpYHbG/ZA0DUcaPGoYWB/kqh6W8D4gBf8M6XUdoyRJq/j1NGsDfDMBRtMGaPT/s3HIgFWDTnaNtfwUK3Dgz/QHk+00rq3yb51kNLoHU+S5eNflG0t/q3B0fcymitG5pmxzyEi0HsN++TAn3E1KA9FlFipC0goa4uhFUqrThD+gxSn/jS/T6aFcNDv05jdURj9FDBOGPmf9J/dC/1i6nfP3RPfTV23MVa2wu6/GHsXiePCCcPV11Sx2c10+9A5Q6HR+MOg8sU9Y
     ufoLicenseKey: QVptSVVkVC8vLy8vQUFBQUtDSzJ4LzJCOGtweWlZZzhHQUtDekdON0tPYjFHOUFsY2pGK1hyakdmVlpDdy9FK0FVN0xGeTRHcVpEVGRlN3V1TTlYNUJPL2RVM0MrRlMwVVphOGhtZ1pDc3EyejhlbXFTK3h3azgxWTZyNlpJbGFEN1ZSNjBTVVlXZUZqdDNHb0EwWkkvTnNYZVc3VUJHSktzbnRRcll0VURaeUV1Z3JWWTZHR1FvRjdTV3pYVFFHYWxhV3FJR2RkcTAwRXpDUTNoaEJiYXpCS2xiQUMyNHAzeGV2ZmpjditvSkZxcXVEVi8zOFR6eDI3cnE5N05NUW5PMmtic25IZzE2QnlhYlFpdVBUUERMdU5VY3k2dUlxTGF4NUlEOGNoeGprNm9MaTZkRVNoL2JGak9TTHBJc1dmWHU1bnRhTkdwNlpVRTlsYkJEZ2plRkN3bWtrSXZnNlBKb2pldE5xY09OTnRCOUd4Q0lGdlJ1Q3lkVzM=
     delayedInitialization: 0
     cameraDeviceModeSetting: -1
-    maxSimultaneousImageTargets: 4
+    maxSimultaneousImageTargets: 1
     maxSimultaneousObjectTargets: 1
     useDelayedLoadingObjectTargets: 0
     cameraDirection: 0
@@ -43,8 +43,10 @@ MonoBehaviour:
       FieldOfView: {x: 0, y: 0, z: 0, w: 0}
       ContainsMagnet: 0
   databaseLoad:
-    dataSetsToLoad: []
-    dataSetsToActivate: []
+    dataSetsToLoad:
+    - AR_Buds
+    dataSetsToActivate:
+    - AR_Buds
   videoBackground:
     clippingMode: 0
     numDivisions: 2
@@ -64,7 +66,7 @@ MonoBehaviour:
     autoInitTracker: 0
     autoStartTracker: 0
   webcam:
-    deviceNameSetInEditor: Logitech Camera
+    deviceNameSetInEditor: Logitech HD Webcam C615
     flipHorizontally: 0
     turnOffWebCam: 0
     renderTextureLayer: 30
