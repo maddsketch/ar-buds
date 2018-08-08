@@ -7,6 +7,7 @@ public class ARSlideshowContainer : MonoBehaviour
     public enum CONTAINER_STATE { IDLE, ANIMATING_LEFT, ANIMATING_RIGHT }
     private CONTAINER_STATE m_currContainerState = CONTAINER_STATE.IDLE;
 
+    public CarouselDotsManager carouselDotsManager;
     public ARProductContainer[] productContainers;
     private Vector3 m_carouselLeftPos;
     private Vector3 m_carouselViewPos;
@@ -147,6 +148,8 @@ public class ARSlideshowContainer : MonoBehaviour
                         }
                         m_currCarouselPosition++;
                         Debug.Log("Curr carousel index: " + m_currCarouselPosition);
+                        // update the carousel with the correct index
+                        carouselDotsManager.SetCurrentIndex(m_currCarouselPosition);
                     }
                 }
                 else //////// Animating right
@@ -165,6 +168,8 @@ public class ARSlideshowContainer : MonoBehaviour
 
                         m_currCarouselPosition--;
                         Debug.Log("Curr carousel index: " + m_currCarouselPosition);
+                        // update the carousel with the correct index
+                        carouselDotsManager.SetCurrentIndex(m_currCarouselPosition);
                     }
                 }
 
