@@ -10,7 +10,7 @@ public class SimpleButton : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
-        Debug.Log("Button was clicked!!!");
+        //Debug.Log("Button was clicked!!!");
 
         if(OnTap != null)
         {

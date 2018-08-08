@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-
+    public GameObject swipeCanvas;
     public ProductCalloutCanvasManager calloutCanvasManager;
+    public GameObject uiBackButton;
+    public GameObject uiResetButton;
 
     void OnEnable()
     {
         GestureManager.OnARLearnMoreControlClicked += HandleLearnMoreClick;
         SimpleButton.OnTap += HandleSimpleButtonClick;
+        ARContainerManager.OnStateChange += HandleAppStateChange;
     }
 
     void OnDisable()
     {
         GestureManager.OnARLearnMoreControlClicked -= HandleLearnMoreClick;
         SimpleButton.OnTap -= HandleSimpleButtonClick;
+        ARContainerManager.OnStateChange -= HandleAppStateChange;
     }
 
     // Use this for initialization
@@ -24,7 +28,14 @@ public class UIManager : MonoBehaviour
     {
         // hide the product callout by default
         calloutCanvasManager.Show(false);
-	}
+        //hide the swipe canvas by default
+        swipeCanvas.SetActive(false);
+
+        // hide the buttons by default
+        uiBackButton.SetActive(false);
+        uiResetButton.SetActive(false);
+
+    }
 	
     private void HandleLearnMoreClick(string productName)
     {
@@ -65,10 +76,27 @@ public class UIManager : MonoBehaviour
 
     private void HandleSimpleButtonClick(string buttonName)
     {
+        Debug.Log("Clicked button name: " + buttonName);
+
         if(buttonName.Equals("Close_Product_Info_Button"))
         {
             calloutCanvasManager.Show(false);
+        }
+    }
 
+    private void HandleAppStateChange(AppStateManager.SCREEN_STATE screenState)
+    {
+        if(screenState == AppStateManager.SCREEN_STATE.MENU)
+        {
+            swipeCanvas.SetActive(false);
+            uiResetButton.SetActive(true);
+            uiBackButton.SetActive(false);
+        }
+        else if (screenState == AppStateManager.SCREEN_STATE.SLIDESHOW)
+        {
+            swipeCanvas.SetActive(true);
+            uiResetButton.SetActive(true);
+            uiBackButton.SetActive(true);
         }
     }
 

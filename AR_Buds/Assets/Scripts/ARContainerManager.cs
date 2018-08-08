@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ARContainerManager : MonoBehaviour
-{    
+{
+    public delegate void StateChangeAction(AppStateManager.SCREEN_STATE screenState);
+    public static event StateChangeAction OnStateChange;
+
     public GameObject ARMenu_Liiv_Prefab;
     public GameObject[] ARSlideshowContainerPrefabs;
 
     private ARMenu _activeARMenu = null;
     private ARSlideshowContainer _activeSlideshowContainer = null;
+
+    private AppStateManager appStateManager;
 
     public enum SLIDESHOW_INDEX : int // NOTE: Indices should match the prefabs in the array: ARSlideshowContainerPrefabs
     {
@@ -31,19 +36,44 @@ public class ARContainerManager : MonoBehaviour
 
         // attach event handlers
         GestureManager.OnARMenuControlClicked += HandleARMenuSelection;
+        SimpleButton.OnTap += HandleSimpleButtonClick;
     }
 
     void OnDisable()
     {
         // remove event handlers
         GestureManager.OnARMenuControlClicked -= HandleARMenuSelection;
+        SimpleButton.OnTap -= HandleSimpleButtonClick;
     }
 
     void Start ()
     {
-        // no current implementation
-	}
-	
+        appStateManager = AppStateManager.stateManager;
+    }
+
+    private void HandleSimpleButtonClick(string buttonName)
+    {
+        //Debug.Log("Clicked button name: " + buttonName);
+
+        if (buttonName.Equals("Back_Button"))
+        {
+            //_activeARMenu.gameObject.SetActive(true);
+            SpawnMenu();
+            Destroy(_activeSlideshowContainer.gameObject);
+        }
+        else if (buttonName.Equals("Reset_Button"))
+        {
+            m_IsMenuBuilt = false;
+
+            if (_activeARMenu != null)
+                Destroy(_activeARMenu.gameObject);
+
+            if(_activeSlideshowContainer != null)
+                Destroy(_activeSlideshowContainer.gameObject);
+                        
+        }
+    }
+
     public void SetTrackingFound(bool isTrackingFound)
     {
         // do spawn logic here
@@ -68,7 +98,10 @@ public class ARContainerManager : MonoBehaviour
 
         _activeARMenu = arMenuLiivObj.transform.GetComponent<ARMenu>();
         _activeARMenu.Init(ARMenu.MENU_TYPE.Liiv);
-      
+
+        appStateManager.CurrentScreenState = AppStateManager.SCREEN_STATE.MENU;
+        if (OnStateChange != null)
+            OnStateChange(AppStateManager.SCREEN_STATE.MENU);
     }
 
     private void ShowAllMenuComponents()
@@ -104,6 +137,10 @@ public class ARContainerManager : MonoBehaviour
         if (menuIndex > -1)
         {
             BuildProductSlideshow(menuIndex);
+            appStateManager.CurrentScreenState = AppStateManager.SCREEN_STATE.SLIDESHOW;
+            if (OnStateChange != null)
+                OnStateChange(AppStateManager.SCREEN_STATE.SLIDESHOW);
+
             StartCoroutine(TransitionToSlideshow());
         }
     }

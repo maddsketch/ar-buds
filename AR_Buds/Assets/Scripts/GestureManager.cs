@@ -101,15 +101,47 @@ public class GestureManager : MonoBehaviour
                 if (tagName == "ARControl")
                 {
                     GameObject tappedControl = hit.collider.gameObject;
+                    Debug.Log("Tapped an AR Control");
 
                     if (OnARControlClicked != null)
                     {
                         OnARControlClicked(tappedControl);
                     }
                 }
-                else if (tagName == "Menu_Row")
+                else if (tagName == "ARControl_Logo")
                 {
-                    Debug.Log("Tapped a menu row...");
+                    GameObject tappedControl = hit.collider.gameObject;
+                    Debug.Log("Tapped an AR Logo Control: " + tappedControl.name);
+
+                    if (OnARLogoControlClicked != null)
+                    {
+                        OnARLogoControlClicked(tappedControl.name);
+                    }
+                }
+                else if (tagName == "ARControl_Menu_Category")
+                {
+                    GameObject tappedControl = hit.collider.gameObject;
+                    ARCategoryControl control = tappedControl.transform.GetComponent<ARCategoryControl>();
+                    Debug.Log("Tapped an AR Menu Control: " + tappedControl.name);
+                    if (control.CanTap)
+                    {
+                        control.CanTap = false;
+
+                        if (OnARMenuControlClicked != null)
+                        {
+                            OnARMenuControlClicked(tappedControl.name);
+                        }
+                    }
+                }
+                else if (tagName == "ARControl_LearnMore")
+                {
+                    GameObject tappedControl = hit.collider.gameObject;
+                    Debug.Log("Tapped an AR Learn More Control: " + tappedControl.name);
+
+                    if (OnARLearnMoreControlClicked != null)
+                    {
+                        OnARLearnMoreControlClicked(tappedControl.name);
+                    }
                 }
             }
         }

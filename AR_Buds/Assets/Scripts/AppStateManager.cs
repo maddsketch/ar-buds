@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class AppStateManager
 {   
+    public enum SCREEN_STATE { IDLE, MENU, SLIDESHOW }
+    private SCREEN_STATE m_currScreenState;
+    public SCREEN_STATE CurrentScreenState
+    {
+        set { m_currScreenState = value; }
+        get { return m_currScreenState; }
+    }
+
     public enum APP_STATE { LOADING, TRACKING_MARKER, TRACKED_TO_MARKER }
     public enum TRACKING_STATE { TRACKING, TRACKING_FOUND }
     private TRACKING_STATE m_trackingState;
